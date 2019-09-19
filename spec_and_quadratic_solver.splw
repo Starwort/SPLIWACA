@@ -26,7 +26,6 @@
   structure FOR <variable name> OF <iterable expression> DO <code> ENDFOR: foreach loop
   structure WHILE <expression> DO <code> ENDWHILE: while loop
 
-  alias <variable name> = <expression>: SET TO
   alias FUNC: FUNCTION
   alias PROC: PROCEDURE
   alias PRINT: OUTPUT
