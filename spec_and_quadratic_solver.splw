@@ -1,0 +1,219 @@
+/* PSEUDO LANGUAGE SPECIFICATION v1 */
+// <- comment
+/* <- block comment -> */
+/* documentation info
+  - words in <angular brackets> are required
+  - words or groups in [square brackets] are optional
+  - items in (brackets) are grouped
+  - arguments with ... have repetitions defined by what requires the item
+  - arguments or groups with * can be repeated
+*/
+/* keywords and structures
+
+  keyword INPUT <type> <variable>: take input of type <type> into <variable>. Includes type validation and conversion
+  keyword OUTPUT <string...>: prints the plaintext string after output. Variables can be added by prefixing them with $. If a variable cannot be resolved then the $ will be printed
+  keyword PLAINTEXT <sentence>: read sentence and interpret meaning - for the programmer
+  keyword CREATE <type or class>[ WITH <arg...>]: returns an instance of <type or class>
+  keyword CAST <type> <expression>: converts the value of <expression> to <type>
+  keyword I_AM_MAIN_FILE: initialised with TRUE if this is the file being run, otherwise FALSE
+
+  structure IF <expression> DO <code>[ ELSE IF <expression> DO <code>]* [ELSE DO <code>] ENDIF: standard if-else structure
+  structure FUNCTION <function name> [TAKES( <type> <arg_name>)* ]-> <type> AS <code> RETURN <rv>: define a function with the given arguments and return type
+  structure PROCEDURE <function name> [TAKES( <type> <arg_name>)* ]AS <code> END: define a procedure with the given arguments
+  structure ANONF [<type> <arg_name>]* -> <type> AS <code> RETURN <rv>: define an anonymous function with the given arguments and return type (useful for callbacks)
+  structure ANONP [<type> <arg_name>]* AS <code> END: define an anonymous procedure with the given arguments (useful for callbacks)
+  structure SET <variable name> TO <expression>: self-explanatory
+  structure FOR <variable name> OF <iterable expression> DO <code> ENDFOR: foreach loop
+  structure WHILE <expression> DO <code> ENDWHILE: while loop
+
+  alias <variable name> = <expression>: SET TO
+  alias FUNC: FUNCTION
+  alias PROC: PROCEDURE
+  alias PRINT: OUTPUT
+*/
+/* literals
+
+  str: "this is a string literal" 'this is a string literal' 'this\'s also a string literal'
+  int: just an integer e.g. 3
+  float: just a float e.g. 4.5
+  list: values separated by comma e.g. 'a', 2, "seven", 9.3
+  bool: true/false/null
+
+  alias STRING, STR, string: str
+  alias INT, INTEGER, integer: int
+  alias REAL, real, FLOAT: float
+  alias LIST, ARRAY, array: list
+  alias BOOL, BOOLEAN, boolean: bool
+
+  literal INFINITY: float('inf')
+  literal NAN: float('nan')
+  literal TRUE: bool true
+  literal FALSE: bool false
+  literal NULL: bool null (None)
+
+  alias Infinity, infinity, INF, Inf, inf: INFINITY
+  alias NaN, nan: NAN
+  alias true, True: TRUE
+  alias false, False: FALSE
+  alias null, None: NULL
+
+*/
+
+/* program start */
+ttk = tkinter.ttk
+alerts = tkinter.messagebox
+
+FUNCTION create_window TAKES tkinter.Widget widget_type -> tkinter.Widget AS
+    SET master TO CREATE widget_type
+
+    SET vcmd TO master.register(ANONF str S -> bool AS
+        // validate the input
+        SET rv TO NULL
+        IF S in string.digits DO
+            SET rv TO TRUE
+        ELSE
+            master.bell()
+            SET rv TO FALSE
+        ENDIF
+        RETURN rv
+    ), "%S"
+
+    // construct the window
+    // a
+    SET a_num TO CREATE ttk.Spinbox WITH master, from_=-INFINITY, to=INFINITY, width=3, validate='key', validatecommand=vcmd
+    SET a_den TO CREATE ttk.Spinbox WITH master, from_=-INFINITY, to=INFINITY, width=3, validate='key', validatecommand=vcmd
+    SET a_sep TO CREATE ttk.Separator WITH master
+    SET x2 TO CREATE ttk.Label WITH master, text='x² + '
+    a_num.insert(0, 0)
+    a_den.insert(0, 1)
+
+    // b
+    SET b_num TO CREATE ttk.Spinbox WITH master, from_=-INFINITY, to=INFINITY, width=3, validate='key', validatecommand=vcmd
+    SET b_den TO CREATE ttk.Spinbox WITH master, from_=-INFINITY, to=INFINITY, width=3, validate='key', validatecommand=vcmd
+    SET b_sep TO CREATE ttk.Separator WITH master
+    SET x TO CREATE ttk.Label WITH master, text='x + '
+    b_num.insert(0, 0)
+    b_den.insert(0, 1)
+
+    // c
+    SET c_num TO CREATE ttk.Spinbox WITH master, from_=-INFINITY, to=INFINITY, width=3, validate='key', validatecommand=vcmd
+    SET c_den TO CREATE ttk.Spinbox WITH master, from_=-INFINITY, to=INFINITY, width=3, validate='key', validatecommand=vcmd
+    SET c_sep TO CREATE ttk.Separator WITH master
+    c_num.insert(0, 0)
+    c_den.insert(0, 1)
+
+    // =
+    SET eq TO CREATE ttk.Label WITH master, text=' = '
+
+    // target - can be left 0 or set to modify equation interpretation
+    SET target_num TO CREATE ttk.Spinbox WITH master, from_=-INFINITY, to=INFINITY, width=3, validate='key', validatecommand=vcmd
+    SET target_den TO CREATE ttk.Spinbox WITH master, from_=-INFINITY, to=INFINITY, width=3, validate='key', validatecommand=vcmd
+    SET target_sep TO CREATE ttk.Separator WITH master
+    target_num.insert(0, 0)
+    target_den.insert(0, 1)
+
+    // make a solve button
+    SET submit TO CREATE ttk.Button WITH master, text='Evaluate equation', command=ANONP AS
+        // fetch input
+        // type checking left to implementation
+        SET a TO (CAST INT a_num.get() / CAST INT a_den.get())
+        SET b TO (CAST INT b_num.get() / CAST INT b_den.get())
+        SET c TO (CAST INT c_num.get() / CAST INT c_den.get())
+        SET target TO (CAST INT target_num.get() / CAST INT target_den.get())
+
+        // offset c by target to allow quadratic formula
+        SET c TO c - target
+
+        // handle edge cases where a is 0
+        IF a = 0 DO
+            // handle edge cases where b is also 0
+            IF b = 0 DO
+                // this is a numeric equality. test c = target
+                IF c DO
+                    // c != target so false for all x
+                    alerts.showinfo('Solutions', 'No solutions')
+                ELSE DO
+                    // c = target so true for all x
+                    alerts.showinfo(
+                        "Solutions",
+                        "Your equation is true for all x",
+                    )
+                ENDIF
+            ELSE DO
+                // calculate the linear equation
+                SET x TO -c / b
+                alerts.showinfo("Solutions", "x = " + CAST STR x)
+            ENDIF
+        ELSE DO
+            // quadratic, so use quadratic formula
+            // check discriminant
+            SET dicrim TO b * b - 4 * a * c
+            IF discrim < 0 DO
+                // no solutions
+                alerts.showinfo(
+                    "Solutions", "No solutions"
+                )
+            ELSE IF discrim = 0 DO
+                // one solution
+                SET x TO -b / (2 * a)
+                alerts.showinfo("Solutions", "x = " + CAST STR x)
+            ELSE DO
+                // two solutions
+                SET x1 TO (-b - math.sqrt(discrim)) / (2 * a)
+                SET x2 TO (-b + math.sqrt(discrim)) / (2 * a)
+                alerts.showinfo(
+                    "Solutions", "x = " + CAST STR x1 + " or x = " + CAST STR x2
+                )
+            ENDIF
+        ENDIF
+    END
+
+    // arrange the GUI
+    a_num.grid(row=0, column=0, sticky=tkinter.NSEW, padx=5)
+    a_sep.grid(row=1, column=0, sticky=tkinter.NSEW, pady=5)
+    a_den.grid(row=2, column=0, sticky=tkinter.NSEW, padx=5)
+    x2.grid(row=0, column=1, sticky=tkinter.NSEW, rowspan=3)
+
+    b_num.grid(row=0, column=2, sticky=tkinter.NSEW, padx=5)
+    b_sep.grid(row=1, column=2, sticky=tkinter.NSEW, pady=5)
+    b_den.grid(row=2, column=2, sticky=tkinter.NSEW, padx=5)
+    x.grid(row=0, column=3, sticky=tkinter.NSEW, rowspan=3)
+
+    c_num.grid(row=0, column=4, sticky=tkinter.NSEW, padx=5)
+    c_sep.grid(row=1, column=4, sticky=tkinter.NSEW, pady=5)
+    c_den.grid(row=2, column=4, sticky=tkinter.NSEW, padx=5)
+
+    eq.grid(row=0, column=5, sticky=tkinter.NSEW, rowspan=3)
+
+    target_num.grid(row=0, column=6, sticky=tkinter.NSEW, padx=5)
+    target_sep.grid(row=1, column=6, sticky=tkinter.NSEW, pady=5)
+    target_den.grid(row=2, column=6, sticky=tkinter.NSEW, padx=5)
+
+    submit.grid(
+        row=3,
+        column=0,
+        sticky=tkinter.NSEW,
+        columnspan=7,
+        padx=10,
+        pady=10,
+    )
+
+    // set widget title
+    master.title("Quadratic Equation Solver")
+
+    // return the widget
+    return master
+
+
+// if running the module as a standalone file
+IF I_AM_MAIN_FILE DO
+    // make and run a Tk containing the equation solver
+    SET root TO create_window()
+
+    // tell the user how to use the program
+    alerts.showinfo(
+        "Instructions",
+        "Enter your equation using the fraction boxes. All fractions must comprise of one integer divided by another integer, e.g. ²⁄₃ - the box above the dividing line is the numerator and the one below it is the denominator",
+    )
+    root.mainloop()
+ENDIF
