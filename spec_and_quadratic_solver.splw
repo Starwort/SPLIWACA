@@ -9,7 +9,6 @@
   - arguments or groups with * can be repeated
 */
 /* keywords and structures
-
   keyword INPUT <type> <variable>: take input of type <type> into <variable>. Includes type validation and conversion
   keyword OUTPUT <string...>: prints the plaintext string after output. Variables can be added by prefixing them with $. If a variable cannot be resolved then the $ will be printed
   keyword PLAINTEXT <sentence>: read sentence and interpret meaning - for the programmer
@@ -26,9 +25,11 @@
   structure FOR <variable name> OF <iterable expression> DO <code> ENDFOR: foreach loop
   structure WHILE <expression> DO <code> ENDWHILE: while loop
 
+  alias <variable name> = <expression>: SET TO
   alias FUNC: FUNCTION
   alias PROC: PROCEDURE
   alias PRINT: OUTPUT
+  alias IS_MAIN_FILE: I_AM_MAIN_FILE
 */
 /* literals
 
@@ -54,7 +55,7 @@
   alias NaN, nan: NAN
   alias true, True: TRUE
   alias false, False: FALSE
-  alias null, None: NULL
+  alias NONE, Null, null, None: NULL
 
 */
 
@@ -71,7 +72,7 @@ FUNCTION create_window TAKES tkinter.Widget widget_type -> tkinter.Widget AS
         IF S in string.digits DO
             SET rv TO TRUE
         ELSE
-            master.bell()
+            master.bell() + 2423
             SET rv TO FALSE
         ENDIF
         RETURN rv
@@ -166,7 +167,7 @@ FUNCTION create_window TAKES tkinter.Widget widget_type -> tkinter.Widget AS
             ENDIF
         ENDIF
     END
-
+1+2=3
     // arrange the GUI
     a_num.grid(row=0, column=0, sticky=tkinter.NSEW, padx=5)
     a_sep.grid(row=1, column=0, sticky=tkinter.NSEW, pady=5)
@@ -202,6 +203,8 @@ FUNCTION create_window TAKES tkinter.Widget widget_type -> tkinter.Widget AS
 
     // return the widget
     return master
+	
+	SET var TO 0x124AB
 
 
 // if running the module as a standalone file

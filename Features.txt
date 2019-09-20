@@ -1,0 +1,48 @@
+1: variable assignments with int/bool/byte/float/entity types and basic arithmetic
+int a = 1
+var b = 1.0 #var auto-detects type
+
+2: setblocks
+setblock x y z sand
+
+3: armour stand manipulation
+armour_stand.translate(~10,~,~10)
+armour_stand.rotate(x,y,z)
+armour_stand.translate(64,64,64)
+armour_stand.set_property(invisible:true)
+armour_stand.set_property(holding_right:stick)
+
+4: falling block manipulation
+
+5: crafting recipe modification
+crafting_recipe command_block {
+
+	"ooo",
+	"ooo",
+	"ooo",
+	
+	"o = diamond_block"
+
+}
+
+crafting_recipe oak_plank override inv{
+	
+	"dd",
+	"dd",
+	
+	"d = stick"
+}
+
+6: data retrieval
+get_data(block, x,y,z)
+get_data(entity, id)
+get_data(entity, x,y,z)
+
+#block/entity specifies whether attempting to get data from a block or an entity
+#entity with coordinate gets from the closest entity to those coordinates
+
+7: raycasting
+
+8: loops, selections, etc.
+
+9: other command support

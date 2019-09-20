@@ -1,0 +1,11 @@
+
+FUNCTION increment TAKES int i -> int AS
+	i += 1
+	RETURN i
+	
+SET a TO 0
+FOR i OF 5 DO
+	SET a TO increment(a)
+
+OUTPUT(a)
+
