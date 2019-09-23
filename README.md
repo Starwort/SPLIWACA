@@ -76,7 +76,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
   - `WHILE <expression> DO <code> END WHILE`
     - This is a while loop
 
-### Literals, types, and constants
+### Literals, Types, and Constants
 
 - Literals and types
   - `str`
@@ -171,3 +171,33 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
         - `MAIN_FILE`
         - `IS_MAIN`
         - `THIS_IS_MAIN_FILE`
+
+### Boolean Operators
+
+- `IS`
+  - Tests if two variables are the same object
+- `NOT`
+  - Negates a Boolean value
+  - Aliases:
+    - `!`
+- `=`
+  - Tests if two variables are equal
+- `≠`
+  - Tests if two variables are unequal
+  - Aliases:
+    - `=/=`
+    - `!=`
+- `<`
+  - Tests if the left variable is less than the right variable
+- `>`
+  - Tests if the left variable is more than the right variable
+- `≤`
+  - Tests if the left variable is less than or equal to the right variable
+  - Aliases:
+    - `⩽`
+    - `<=`
+- `≥`
+  - Tests if the left variable is more than or equal to the right variable
+  - Aliases:
+    - `⩾`
+    - `>=`
