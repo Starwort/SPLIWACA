@@ -117,21 +117,22 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
       - `ARRAY`
       - `Array`
       - `tuple`
-      - `Tuple`
       - `TUPLE`
+      - `Tuple`
   - `bool`
     - Boolean value - `TRUE` or `FALSE`
     - Aliases:
       - `BOOL`
       - `Bool`
       - `boolean`
-      - `Boolean`
       - `BOOLEAN`
+      - `Boolean`
   - `complex`
     - Complex number - any multiple of `i`
     - Instantiated with `Xi` where `X` represents any valid `int` or `float` literal
     - Aliases:
       - `COMPLEX`
+      - `Complex`
 - Constants
   - Static constants
     - `TRUE`
