@@ -42,6 +42,8 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
       - `PLAINTEXT <text...>`
   - `CALL <function> [WITH <arg>*]`
     - Calls `<function>` with `<arg>*`, if supplied. Equivalent to `<function>(<arg>*)` in most languages
+  - `REQUIRE <interpreter or language>*`
+    - Define that this program requires to be run in of the specified interpreters or language in order to work correctly; e.g. programs specific to the official Python interpreter may rely on implementation details, and programs specific to Python may rely on package names e.g. tkinter
 - Structures
   - `IF <expression> DO <code> [ELSE IF <expression> DO <code>]* [ELSE DO <code>] END IF`
     - This is just a standard if-else structure
