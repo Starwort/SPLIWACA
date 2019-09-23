@@ -203,3 +203,12 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
   - Aliases:
     - `⩾`
     - `>=`
+
+### Miscellaneous
+
+- If a variable is used before it's defined, the following failsafes will occur, in order:
+  - The interpreter will attempt to import a SPLW module with the same name as the variable, then perform the operation again with the variable set as the imported module
+  - The interpreter will attempt to import a native module with the same name as the variable, then perform the operation again with the variable set as the imported module
+  - The interpreter will attempt to install and import a native module with the same name as the variable, then perform the operation again with the variable set as the imported module
+  - The interpreter will treat the variable name as a bare word, and retry the operation
+  - If nothing previous works, then an error will be thrown
