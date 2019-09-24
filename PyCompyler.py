@@ -4,9 +4,17 @@ class PyCompiler:
     filename = ""
     extension = "splw"
     lexer = None
+    _instance = None
+
+    @staticmethod
+    def getInstance():
+        if PyCompiler._instance == None:
+            PyCompiler('test_script')
+        return PyCompiler._instance
 
     def __init__(self, filename: str):
         self.filename = filename
+        PyCompiler._instance = self
 
     def run(self):
         raw_text = self.load()
