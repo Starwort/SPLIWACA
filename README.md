@@ -42,6 +42,11 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
       - `PLAINTEXT <text...>`
   - `CALL <function> [WITH <arg>*]`
     - Calls `<function>` with `<arg>*`, if supplied. Equivalent to `<function>(<arg>*)` in most languages
+  - `QUIT [value]`
+    - Shuts down the interpreter and stops execution. If provided, returns with error code `[value]`
+    - Aliases:
+      - `EXIT [value]`
+      - `STOP [value]`
   - `REQUIRE <interpreter or language>*`
     - Define that this program requires to be run in of the specified interpreters or language in order to work correctly; e.g. programs specific to the official Python interpreter may rely on implementation details, and programs specific to Python may rely on package names e.g. tkinter
 - Structures
@@ -110,6 +115,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
       - `Number`
   - `list`
     - Any number of values separated by a comma
+    - Can be made up to 2D by separating 1D lists with `||`
     - Aliases:
       - `LIST`
       - `List`
@@ -119,6 +125,21 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
       - `tuple`
       - `TUPLE`
       - `Tuple`
+  - `dict`
+    - Any set of keys mapped to values
+    - Instantiated with `<key>=<value>` pairs separated by `||`
+    - Aliases:
+      - `DICT`
+      - `Dict`
+      - `dictionary`
+      - `DICTIONARY`
+      - `Dictionary`
+      - `map`
+      - `MAP`
+      - `Map`
+      - `mapping`
+      - `MAPPING`
+      - `Mapping`
   - `bool`
     - Boolean value - `TRUE` or `FALSE`
     - Aliases:
@@ -174,6 +195,10 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
         - `MAIN_FILE`
         - `IS_MAIN`
         - `THIS_IS_MAIN_FILE`
+    - `_INTERPRETER`
+      - Acts as a module, allowing direct use of interpreter methods/functions.
+      - Should be sandboxed i.e. unable to change program memory outside of that specified.
+      - Can be used to directly make interpreter calls if the interpreter supports an `eval` method
 
 ### Boolean Operators
 
@@ -204,6 +229,53 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
   - Aliases:
     - `⩾`
     - `>=`
+
+### Calculation
+
+- Decimal operations
+  - `*`
+    - Multiplies two numbers together
+    - Also extends a string with itself if multiplied by an int
+  - `**`
+    - Takes the power of one number to another
+  - `/`
+    - Divides one number by another
+  - `//`
+    - Divides one number by another and returns an integer
+  - `+`
+    - Adds two numbers
+    - Also used to concatenate strings
+  - `-`
+    - Subtracts one number from another
+  - `%`
+    - Modulo operator
+- Bitwise operations
+  - `^`
+    - Bitwise XOR
+  - `&`
+    - Bitwise AND
+  - `|`
+    - Bitwise OR
+  - `>>`
+    - Arithmetic Shift Right
+  - `<<`
+    - Arithmetic Shift Left
+
+### Iteration
+
+- Strings:
+  - Iteration should occur over each character in the string
+- Lists:
+  - Iteration should occur over each element of the list
+- Dicts:
+  - Iteration should occur over the keys of the dict
+
+### Object Access
+
+- Attribute `x` of `y`
+  - `y.x`
+- Item `x` of `y`
+  - `y[x]`
 
 ### Miscellaneous
 
