@@ -199,35 +199,51 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
       - Acts as a module, allowing direct use of interpreter methods/functions.
       - Should be sandboxed i.e. unable to change program memory outside of that specified.
       - Can be used to directly make interpreter calls if the interpreter supports an `eval` method
+      - It is a syntax error to use this without a `REQUIRE` statement
 
 ### Boolean Operators
 
 - `IS`
   - Tests if two variables are the same object
+  - Aliases:
+    - `≣`
+    - `≡`
 - `NOT`
   - Negates a Boolean value
   - Aliases:
     - `!`
 - `=`
   - Tests if two variables are equal
+  - Aliases:
+    - `==`
 - `≠`
   - Tests if two variables are unequal
   - Aliases:
     - `=/=`
     - `!=`
-- `<`
+- `≨`
   - Tests if the left variable is less than the right variable
-- `>`
+  - Aliases:
+    - `≱`
+    - `<`
+- `≩`
   - Tests if the left variable is more than the right variable
+  - Aliases:
+    - `≰`
+    - `>`
 - `≤`
   - Tests if the left variable is less than or equal to the right variable
   - Aliases:
     - `⩽`
+    - `≦`
+    - `≯`
     - `<=`
 - `≥`
   - Tests if the left variable is more than or equal to the right variable
   - Aliases:
     - `⩾`
+    - `≧`
+    - `≮`
     - `>=`
 
 ### Calculation
