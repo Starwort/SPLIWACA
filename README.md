@@ -13,6 +13,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 - Keywords, placeholders, or groups within square brackets (`[]`) are OPTIONAL, this means that they can be left out. Don't include the brackets. These also act as grouping brackets.
 - Placeholders and groups marked with an asterisk (`*`) are optionally repeatable
 - Placeholders and groups marked with an ellipsis (`...`) within the name are greedy repeated arguments - they consume everything after them
+- A backslash (`\`) before a special character as indicated above indicates that that character will instead be interpreted literally
 
 ### Commenting
 
