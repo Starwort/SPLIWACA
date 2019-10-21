@@ -92,6 +92,10 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
     - This is a for-each loop
   - `WHILE <expression> DO <code> END WHILE`
     - This is a while loop
+  - `STRUCTURE <name> AS [<property type> <property name>]* END STRUCTURE`
+    - This is a data structure
+    - Aliases:
+      - `STRUCT <name> AS [<property type> <property name>]* END STRUCTURE`
 
 ### Literals, Types, and Constants
 
