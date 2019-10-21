@@ -1,3 +1,6 @@
 [submodule "interpreters/official/cpp"]
 	path = interpreters/official/cpp
 	url = https://github.com/Doctor5555/SPLIWACA-CPP-Interpreter-transpiler
+[submodule "editor-extensions/vscode/starwort"]
+	path = editor-extensions/vscode/starwort
+	url = https://github.com/Starwort/spliwaca-code-extension.git
