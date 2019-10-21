@@ -304,7 +304,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 - Attribute `x` of `y`
   - `y.x`
 - Item `x` of `y`
-  - `y[x]`
+  - `y\[x\]`
   - Lists start at `0`
 
 ### Grouping
