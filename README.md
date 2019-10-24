@@ -309,7 +309,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 
 ### Grouping
 
-- Objects can be grouped, for clarity, with brackets (`()`). This also terminates `CALL`'s argument consumption
+- Objects can be grouped, for clarity, with brackets (`()`). This also terminates argument consumption
 
 ### Undefined variables
 
