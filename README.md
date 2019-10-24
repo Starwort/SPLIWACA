@@ -64,28 +64,28 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
     - This defines a procedure
     - Aliases:
       - `PROC <procedure name> [TAKES (<arg type> <arg name>)*] AS <code> END PROCEDURE`
-  - `ANONF [<arg type> <arg name>]* RETURNS <return type> AS <code> RETURN <return value>`
+  - `ANONF [TAKES (<arg type> <arg name>)*] RETURNS <return type> AS <code> RETURN <return value>`
     - An anonymous function
     - Aliases:
-      - `ANONFUNC [<arg type> <arg name>]* RETURNS <return type> AS <code> RETURN <return value>`
-      - `ANONFUNCTION [<arg type> <arg name>]* RETURNS <return type> AS <code> RETURN <return value>`
-      - `ANONYMOUSF [<arg type> <arg name>]* RETURNS <return type> AS <code> RETURN <return value>`
-      - `ANONYMOUSFUNC [<arg type> <arg name>]* RETURNS <return type> AS <code> RETURN <return value>`
-      - `ANONYMOUSFUNCTION [<arg type> <arg name>]* RETURNS <return type> AS <code> RETURN <return value>`
-      - `ANONF [<arg type> <arg name>]* -> <return type> AS <code> RETURN <return value>`
-      - `ANONFUNC [<arg type> <arg name>]* -> <return type> AS <code> RETURN <return value>`
-      - `ANONFUNCTION [<arg type> <arg name>]* -> <return type> AS <code> RETURN <return value>`
-      - `ANONYMOUSF [<arg type> <arg name>]* -> <return type> AS <code> RETURN <return value>`
-      - `ANONYMOUSFUNC [<arg type> <arg name>]* -> <return type> AS <code> RETURN <return value>`
-      - `ANONYMOUSFUNCTION [<arg type> <arg name>]* -> <return type> AS <code> RETURN <return value>`
-  - `ANONP [<arg type> <arg name>]* AS <code> END PROCEDURE`
+      - `ANONFUNC [TAKES (<arg type> <arg name>)*] RETURNS <return type> AS <code> RETURN <return value>`
+      - `ANONFUNCTION [TAKES (<arg type> <arg name>)*] RETURNS <return type> AS <code> RETURN <return value>`
+      - `ANONYMOUSF [TAKES (<arg type> <arg name>)*] RETURNS <return type> AS <code> RETURN <return value>`
+      - `ANONYMOUSFUNC [TAKES (<arg type> <arg name>)*] RETURNS <return type> AS <code> RETURN <return value>`
+      - `ANONYMOUSFUNCTION [TAKES (<arg type> <arg name>)*] RETURNS <return type> AS <code> RETURN <return value>`
+      - `ANONF [TAKES (<arg type> <arg name>)*] -> <return type> AS <code> RETURN <return value>`
+      - `ANONFUNC [TAKES (<arg type> <arg name>)*] -> <return type> AS <code> RETURN <return value>`
+      - `ANONFUNCTION [TAKES (<arg type> <arg name>)*] -> <return type> AS <code> RETURN <return value>`
+      - `ANONYMOUSF [TAKES (<arg type> <arg name>)*] -> <return type> AS <code> RETURN <return value>`
+      - `ANONYMOUSFUNC [TAKES (<arg type> <arg name>)*] -> <return type> AS <code> RETURN <return value>`
+      - `ANONYMOUSFUNCTION [TAKES (<arg type> <arg name>)*] -> <return type> AS <code> RETURN <return value>`
+  - `ANONP [TAKES (<arg type> <arg name>)*] AS <code> END PROCEDURE`
     - An anonymous procedure
     - Aliases:
-      - `ANONPROC [<arg type> <arg name>]* AS <code> END PROCEDURE`
-      - `ANONPROCEDURE [<arg type> <arg name>]* AS <code> END PROCEDURE`
-      - `ANONYMOUSP [<arg type> <arg name>]* AS <code> END PROCEDURE`
-      - `ANONYMOUSPROC [<arg type> <arg name>]* AS <code> END PROCEDURE`
-      - `ANONYMOUSPROCEDURE [<arg type> <arg name>]* AS <code> END PROCEDURE`
+      - `ANONPROC [TAKES (<arg type> <arg name>)*] AS <code> END PROCEDURE`
+      - `ANONPROCEDURE [TAKES (<arg type> <arg name>)*] AS <code> END PROCEDURE`
+      - `ANONYMOUSP [TAKES (<arg type> <arg name>)*] AS <code> END PROCEDURE`
+      - `ANONYMOUSPROC [TAKES (<arg type> <arg name>)*] AS <code> END PROCEDURE`
+      - `ANONYMOUSPROCEDURE [TAKES (<arg type> <arg name>)*] AS <code> END PROCEDURE`
   - `SET <variable name> TO <expression...>`
     - Sets `<variable name>` to `<expression...>`
   - `FOR <variable name> OF <iterable expression> DO <code> END FOR`
@@ -303,7 +303,8 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 - Attribute `x` of `y`
   - `y.x`
 - Item `x` of `y`
-  - `y[x]`
+  - Literal code: `y[x]`
+  - Code example: `mylist[0]`
   - Lists start at `0`
 
 ### Grouping
