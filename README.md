@@ -1,7 +1,5 @@
 # SPLIWACA
 
-TODO: `,`-separated args, bracketing rules. Define more behaviour
-
 Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 
 ## Specification
@@ -43,7 +41,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
     - Aliases:
       - `PLAINTEXT <text...>`
   - `CALL <function> [WITH <arg>*]`
-    - Calls `<function>` with `<arg>*`, if supplied. Equivalent to `<function>(<arg>*)` in most languages
+    - Calls `<function>` with `<arg>*`, if supplied. Equivalent to `<function>(<arg>*)` in most languages. Arguments should be separated by commas (`CALL my_func WITH arg1, arg2, arg3`)
   - `QUIT [value]`
     - Shuts down the interpreter and stops execution. If provided, returns with error code `[value]`
     - Aliases:
@@ -270,6 +268,8 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
     - Takes the power of one number to another
   - `/`
     - Divides one number by another
+  - `DIVI`
+    - Integer division operation (rounding any remainder towards `-INFINITY` i.e. `1 DIVI 2 = 0`)
   - `+`
     - Adds two numbers
     - Also used to concatenate strings
@@ -309,7 +309,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 
 ### Grouping
 
-- Objects can be grouped, for clarity, with brackets (`()`). This also terminates argument consumption
+- Objects can be grouped, for clarity, with brackets (`()`). This also terminates argument consumption and causes grouped evaluation of terms (`(1 + 2) * 3 = 9`)
 
 ### Undefined variables
 
