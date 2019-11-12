@@ -49,6 +49,14 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
       - `STOP [value]`
   - `REQUIRE <interpreter or language>*`
     - Define that this program requires to be run in of the specified interpreters or language in order to work correctly; e.g. programs specific to the official Python interpreter may rely on implementation details, and programs specific to Python may rely on package names e.g. tkinter
+  - `INCREMENT <int or float variable>`
+    - Adds 1 to the variable, as long as the variable is a numeric type
+    - Aliases:
+      - `INC <var>`
+  - `DECREMENT <int or float variable>`
+    - Subtracts 1 to the variable, as long as the variable is a numeric type
+    - Aliases:
+      - `DEC <var>`
 - Structures
   - `IF <expression> DO <code> [ELSE IF <expression> DO <code>]* [ELSE DO <code>] END IF`
     - This is just a standard if-else structure
