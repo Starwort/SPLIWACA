@@ -240,10 +240,16 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
   - Negates a Boolean value
   - Aliases:
     - `!`
+- `OR`
+  - Tests if two variables both evaluate to True
+  - Aliases:
+    - `∨`
+    - `??`
 - `=`
   - Tests if two variables are equal
   - Aliases:
     - `==`
+    - `EQUALS`
 - `≠`
   - Tests if two variables are unequal
   - Aliases:
