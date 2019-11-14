@@ -28,6 +28,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 - Statements
   - `INPUT <type> <variable name>`
     - Takes an input of type `<type>` and stores it in `<variable name>`
+    - For numeric types (`INT`, `FLOAT`, `COMPLEX`), allow prepending the type with `POS` or `POSITIVE` to specify that the input must be positive, `NEG` or `NEGATIVE` to specify that it must be negative, or `NONZERO` to specify that it must not be zero.
   - `OUTPUT <string...>`
     - Consumes the rest of the line, as plaintext. Words prefixed with `$` will be looked up as variables and, if the variable exists, replaced with the variable contents; otherwise, leaves the `$` and word unchanged. Prints the captured and formatted string to standard out
     - Aliases:
@@ -114,74 +115,74 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 ### Literals, Types, and Constants
 
 - Literals and types
-  - `str`
+  - `STR`
     - This is a string. Strings can be instantiated either with literals (sequences of characters surrounded either by `'` or `"`) or by using the RAW keyword
     - Aliases:
-      - `STR`
       - `Str`
-      - `string`
+      - `str`
       - `STRING`
       - `String`
-  - `int`
+      - `string`
+  - `INT`
     - This is an integer. Integers are instantiated with plain numbers anywhere except inside a string or plaintext line
     - Aliases:
-      - `INT`
       - `Int`
-      - `integer`
+      - `int`
       - `INTEGER`
       - `Integer`
-  - `float`
+      - `integer`
+  - `FLOAT`
     - This is a floating point number; a number with decimal places
     - Aliases:
-      - `FLOAT`
       - `Float`
-      - `real`
+      - `float`
       - `REAL`
       - `Real`
-      - `number`
+      - `real`
       - `NUMBER`
       - `Number`
-  - `list`
+      - `number`
+  - `LIST`
     - Any number of values separated by a comma
     - Can be made up to 2D by separating 1D lists with `||`
     - Aliases:
-      - `LIST`
       - `List`
-      - `array`
+      - `list`
       - `ARRAY`
       - `Array`
-      - `tuple`
+      - `array`
       - `TUPLE`
       - `Tuple`
-  - `dict`
+      - `tuple`
+  - `DICT`
     - Any set of keys mapped to values
     - Instantiated with `<key>=<value>` pairs separated by `||`
     - Aliases:
-      - `DICT`
       - `Dict`
-      - `dictionary`
+      - `dict`
       - `DICTIONARY`
       - `Dictionary`
-      - `map`
+      - `dictionary`
       - `MAP`
       - `Map`
-      - `mapping`
+      - `map`
       - `MAPPING`
       - `Mapping`
-  - `bool`
+      - `mapping`
+  - `BOOL`
     - Boolean value - `TRUE` or `FALSE`
     - Aliases:
-      - `BOOL`
       - `Bool`
-      - `boolean`
+      - `bool`
       - `BOOLEAN`
       - `Boolean`
-  - `complex`
+      - `boolean`
+  - `COMPLEX`
     - Complex number - any multiple of `i`
     - Instantiated with `Xi` where `X` represents any valid `int` or `float` literal
     - Aliases:
-      - `COMPLEX`
       - `Complex`
+      - `complex`
 - Constants
   - Static constants
     - `TRUE`
@@ -202,6 +203,9 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
         - `NONE`
         - `None`
         - `none`
+        - `EMPTY`
+        - `Empty`
+        - `empty`
     - `INFINITY`
       - Represents positive infinity. This is a `float`
       - Aliases:
@@ -225,7 +229,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
         - `THIS_IS_MAIN_FILE`
     - `_INTERPRETER`
       - Acts as a module, allowing direct use of interpreter methods/functions.
-      - Should be sandboxed i.e. unable to change program memory outside of that specified.
+      - Should be sandboxed i.e. unable to interface with the program's own environment via the interpreter's memory interfaces.
       - Can be used to directly make interpreter calls if the interpreter supports an `eval` method
       - It is a syntax error to use this without a `REQUIRE` statement
 
@@ -258,32 +262,32 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 - `≠`
   - Tests if two variables are unequal
   - Aliases:
-    - `=/=`
     - `!=`
-- `≨`
+    - `=/=`
+- `<`
   - Tests if the left variable is less than the right variable
   - Aliases:
+    - `≨`
     - `≱`
-    - `<`
-- `≩`
+- `>`
   - Tests if the left variable is more than the right variable
   - Aliases:
+    - `≩`
     - `≰`
-    - `>`
 - `≤`
   - Tests if the left variable is less than or equal to the right variable
   - Aliases:
     - `⩽`
     - `≦`
-    - `≯`
     - `<=`
+    - `≯`
 - `≥`
   - Tests if the left variable is more than or equal to the right variable
   - Aliases:
     - `⩾`
     - `≧`
-    - `≮`
     - `>=`
+    - `≮`
 
 ### Calculation
 
@@ -341,7 +345,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 ### Undefined variables
 
 - If an undefined variable is referenced, the following failsafes will occur, in order:
-  - The interpreter will attempt to import a SPLW module with the same name as the variable, and set the variable to the imported module
+  - The interpreter will attempt to import a SPLW module in scope with the same name as the variable, and set the variable to the imported module
   - The interpreter will attempt to import a native module with the same name as the variable, and set the variable to the imported module
   - The interpreter will attempt to install and import a native module with the same name as the variable, and set the variable to the imported module
   - The interpreter will treat the variable name as a bare word
