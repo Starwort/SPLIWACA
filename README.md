@@ -144,7 +144,9 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
       - `number`
   - `LIST`
     - Any number of values separated by a comma
-    - Can be made up to 2D by separating 1D lists with `||`
+    - Can have their value consumption curbed by brackets (`()`)
+      - e.g. a 3D list consisting of the indices multiplied together can be defined as follows:
+        - `((0, 0, 0), (0, 0, 0), (0, 0, 0)), ((0, 0, 0), (0, 1, 2), (0, 2, 4)), ((0, 0, 0), (0, 2, 4), (0, 4, 8))`
     - Aliases:
       - `List`
       - `list`
@@ -157,6 +159,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
   - `DICT`
     - Any set of keys mapped to values
     - Instantiated with `<key>=<value>` pairs separated by `||`
+    - Should be wrapped by brackets (`()`)
     - Aliases:
       - `Dict`
       - `dict`
