@@ -61,32 +61,32 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 - Structures
   - `IF <expression> DO <code> [ELSE IF <expression> DO <code>]* [ELSE DO <code>] END IF`
     - This is just a standard if-else structure
-  - `FUNCTION <function name> [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] RETURNS <return type> AS <code> RETURN <value>`
+  - `FUNCTION <function name> [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] RETURNS <return type> AS <code> END FUNCTION`
     - This defines a function
     - Aliases:
-      - `FUNC <name> [TAKES (<type> <arg> [WITH DEFAULT <value>])*] RETURNS <rt> AS <code> RETURN <rv>`
-      - `FUNCTION <function name> [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] -> <return type> AS <code> RETURN <value>`
-      - `FUNC <name> [<- (<type> <arg> [WITH DEFAULT <value>])*] -> <rt> AS <code> RETURN <rv>`
+      - `FUNC <name> [TAKES (<type> <arg> [WITH DEFAULT <value>])*] RETURNS <rt> AS <code> END FUNCTION`
+      - `FUNCTION <function name> [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] -> <return type> AS <code> END FUNCTION`
+      - `FUNC <name> [<- (<type> <arg> [WITH DEFAULT <value>])*] -> <rt> AS <code> END FUNCTION`
   - `PROCEDURE <procedure name> [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] AS <code> END PROCEDURE`
     - This defines a procedure
     - Aliases:
       - `PROC <procedure name> [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] AS <code> END PROCEDURE`
       - `PROCEDURE <procedure name> [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] AS <code> END PROCEDURE`
       - `PROC <procedure name> [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] AS <code> END PROCEDURE`
-  - `ANONF [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] RETURNS <return type> AS <code> RETURN <return value>`
+  - `ANONF [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] RETURNS <return type> AS <code> END FUNCTION`
     - An anonymous function
     - Aliases:
-      - `ANONFUNC [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] RETURNS <return type> AS <code> RETURN <return value>`
-      - `ANONFUNCTION [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] RETURNS <return type> AS <code> RETURN <return value>`
-      - `ANONYMOUSF [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] RETURNS <return type> AS <code> RETURN <return value>`
-      - `ANONYMOUSFUNC [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] RETURNS <return type> AS <code> RETURN <return value>`
-      - `ANONYMOUSFUNCTION [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] RETURNS <return type> AS <code> RETURN <return value>`
-      - `ANONF [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] -> <return type> AS <code> RETURN <return value>`
-      - `ANONFUNC [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] -> <return type> AS <code> RETURN <return value>`
-      - `ANONFUNCTION [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] -> <return type> AS <code> RETURN <return value>`
-      - `ANONYMOUSF [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] -> <return type> AS <code> RETURN <return value>`
-      - `ANONYMOUSFUNC [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] -> <return type> AS <code> RETURN <return value>`
-      - `ANONYMOUSFUNCTION [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] -> <return type> AS <code> RETURN <return value>`
+      - `ANONFUNC [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] RETURNS <return type> AS <code> END FUNCTION`
+      - `ANONFUNCTION [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] RETURNS <return type> AS <code> END FUNCTION`
+      - `ANONYMOUSF [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] RETURNS <return type> AS <code> END FUNCTION`
+      - `ANONYMOUSFUNC [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] RETURNS <return type> AS <code> END FUNCTION`
+      - `ANONYMOUSFUNCTION [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] RETURNS <return type> AS <code> END FUNCTION`
+      - `ANONF [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] -> <return type> AS <code> END FUNCTION`
+      - `ANONFUNC [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] -> <return type> AS <code> END FUNCTION`
+      - `ANONFUNCTION [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] -> <return type> AS <code> END FUNCTION`
+      - `ANONYMOUSF [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] -> <return type> AS <code> END FUNCTION`
+      - `ANONYMOUSFUNC [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] -> <return type> AS <code> END FUNCTION`
+      - `ANONYMOUSFUNCTION [<- (<arg type> <arg name> [WITH DEFAULT <value>])*] -> <return type> AS <code> END FUNCTION`
   - `ANONP [TAKES (<arg type> <arg name> [WITH DEFAULT <value>])*] AS <code> END PROCEDURE`
     - An anonymous procedure
     - Aliases:
@@ -158,7 +158,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
       - `tuple`
   - `DICT`
     - Any set of keys mapped to values
-    - Instantiated with `<key>=<value>` pairs separated by `||`
+    - Instantiated with `<key>:<value>` pairs separated by `,`
     - Should be wrapped by brackets (`()`)
     - Aliases:
       - `Dict`
