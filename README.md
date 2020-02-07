@@ -58,6 +58,12 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
     - Subtracts 1 to the variable, as long as the variable is a numeric type
     - Aliases:
       - `DEC <var>`
+  - `IMPORT <module> [AS <name>]`
+    - Explicit import. Enables warnings on subsequent implicit imports (see Undefined Variables). If import fails, set to `NONE` and print a warning
+  - `NOIMPORT`
+    - Disables subsequent implicit imports entirely (see Undefined Variables)
+  - `NOBARE`
+    - Disables subsequent bare words failsafes entirely (see Undefined Variables)
 - Structures
   - `IF <expression> DO <code> [ELSE IF <expression> DO <code>]* [ELSE DO <code>] END IF`
     - This is just a standard if-else structure
@@ -325,12 +331,12 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 
 ### Iteration
 
-- Strings:
-  - Iteration should occur over each character in the string
-- Lists:
-  - Iteration should occur over each element of the list
-- Dicts:
-  - Iteration should occur over the keys of the dict
+- `STR`s:
+  - Iteration should occur over each character in the object
+- `LIST`s:
+  - Iteration should occur over each element of the object
+- `DICT`s:
+  - Iteration should occur over the keys of the object
 
 ### Object Access
 
@@ -339,7 +345,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 - Item `x` of `y`
   - Literal code: `y[x]`
   - Code example: `mylist[0]`
-  - Lists start at `0`
+  - `LIST`s start at `0`
 
 ### Grouping
 
@@ -352,3 +358,4 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
   - The interpreter will attempt to import a native module with the same name as the variable, and set the variable to the imported module
   - The interpreter will attempt to install and import a native module with the same name as the variable, and set the variable to the imported module
   - The interpreter will treat the variable name as a bare word
+    - If referencing a property, e.g. `myvar.foo`, only the `myvar` portion will be treated as a bare word. This means that if `myvar` is undefined and `foo` is not a property of `STR`s, this will fail
