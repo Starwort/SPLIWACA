@@ -64,6 +64,11 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
     - Disables subsequent implicit imports entirely (see Undefined Variables)
   - `NOBARE`
     - Disables subsequent bare words failsafes entirely (see Undefined Variables)
+  - `RETURN [value]`
+    - Returns while inside a function or procedure.
+      - If in a function, must pass a value of the correct type.
+      - If in a procedure, must not pass a value
+    - There must be at least one of these in every code path of a function to prevent the interpreter from reaching the `END FUNCTION` statement (if this occurs an error will be raised by the interpreter)
 - Structures
   - `IF <expression> DO <code> [ELSE IF <expression> DO <code>]* [ELSE DO <code>] END IF`
     - This is just a standard if-else structure
