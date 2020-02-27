@@ -28,7 +28,12 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 - Statements
   - `INPUT <type> <variable name>`
     - Takes an input of type `<type>` and stores it in `<variable name>`
-    - For numeric types (`INT`, `FLOAT`, `COMPLEX`), allow prepending the type with `POS` or `POSITIVE` to specify that the input must be positive, `NEG` or `NEGATIVE` to specify that it must be negative, or `NONZERO` to specify that it must not be zero.
+    - For real numeric types (`INT`, `FLOAT`), allow prepending the type with a value specifier:
+      - `POS` or `POSITIVE` to specify that the input must be positive
+      - `NONNEG` or `NONNEGATIVE` to specify that the input must not be negative (positive or zero)
+      - `NEG` or `NEGATIVE` to specify that it must be negative
+      - `NONPOS` or `NONPOSITIVE` to specify that the input must not be positive (negative or zero)
+      - `NONZERO` to specify that it must not be zero
   - `OUTPUT <string...>`
     - Consumes the rest of the line, as plaintext. Words prefixed with `$` will be looked up as variables and, if the variable exists, replaced with the variable contents; otherwise, leaves the `$` and word unchanged. Prints the captured and formatted string to standard out
     - Aliases:
