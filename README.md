@@ -1,4 +1,4 @@
-﻿# SPLIWACA
+# SPLIWACA
 
 Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 
@@ -22,6 +22,12 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 ### Whitespace
 
 - Whitespace, other than between keywords and in strings, is ignored
+
+### Variable naming rules
+
+- There are no reserved words, due to the structured nature of the language. This means it is perfectly valid to call your variables `OUTPUT` or `FALSE` if you want to
+- Variable names may start with numbers only if they contain at least one letter; thus `2abc4` is valid but not `345`
+- Variable naming should be `snake_case`, or if requiring a specific interpreter should follow the conventions of that language (this is a convention, not an enforced rule)
 
 ### Keyword instructions/structures
 
@@ -141,6 +147,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
       - `string`
   - `INT`
     - This is an integer. Integers are instantiated with plain numbers anywhere except inside a string or plaintext line
+      - Numeric literals may have underscores (`_`) in them as digit separators
     - Aliases:
       - `Int`
       - `int`
@@ -149,6 +156,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
       - `integer`
   - `FLOAT`
     - This is a floating point number; a number with decimal places
+      - Numeric literals may have underscores (`_`) in them as digit separators
     - Aliases:
       - `Float`
       - `float`
@@ -198,7 +206,8 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
       - `boolean`
   - `COMPLEX`
     - Complex number - any multiple of `i`
-    - Instantiated with `Xi` where `X` represents any valid `int` or `float` literal
+    - Instantiated with `X + Yi` where `X` and `Y` represent any valid `int` or `float` literal. `X` may be omitted
+      - Numeric literals may have underscores (`_`) in them as digit separators
     - Aliases:
       - `Complex`
       - `complex`
