@@ -73,6 +73,8 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
     - Explicit import. Enables warnings on subsequent implicit imports (see Undefined Variables). If import fails, set to `NONE` and print a warning
   - `NOIMPORT`
     - Disables subsequent implicit imports entirely (see Undefined Variables)
+  - `NOINSTALL`
+    - Disables subsequent implicit system installations entirely (if a specific interpreter is required; see Undefined Variables)
   - `NOBARE`
     - Disables subsequent bare words failsafes entirely (see Undefined Variables)
   - `RETURN [value]`
@@ -374,7 +376,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 
 - If an undefined variable is referenced, the following failsafes will occur, in order:
   - The interpreter will attempt to import a SPLW module in scope with the same name as the variable, and set the variable to the imported module
-  - The interpreter will attempt to import a native module with the same name as the variable, and set the variable to the imported module
-  - The interpreter will attempt to install and import a native module with the same name as the variable, and set the variable to the imported module
+  - If running with a specified interpreter (see `REQUIRE`), the interpreter will attempt to import a native module with the same name as the variable, and set the variable to the imported module
+  - If running with a specified interpreter (see `REQUIRE`), the interpreter will attempt to install and import a native module with the same name as the variable, and set the variable to the imported module
   - The interpreter will treat the variable name as a bare word
     - If referencing a property, e.g. `myvar.foo`, only the `myvar` portion will be treated as a bare word. This means that if `myvar` is undefined and `foo` is not a property of `STR`s, this will fail
