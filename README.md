@@ -34,7 +34,7 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
 - Statements
   - `INPUT <type> <variable name>`
     - Takes an input of type `<type>` and stores it in `<variable name>`
-    - For real numeric types (`INT`, `FLOAT`), allow prepending the type with a value specifier:
+    - For numeric types (`INT`, `FLOAT`, `COMPLEX`), allow prepending the type with a value specifier:
       - `POS` or `POSITIVE` to specify that the input must be positive
       - `NONNEG` or `NONNEGATIVE` to specify that the input must not be negative (positive or zero)
       - `NEG` or `NEGATIVE` to specify that it must be negative
@@ -210,6 +210,10 @@ Standardised Pseudo-Lang Implemented With(out) A Cool Acronym
     - Complex number - any multiple of `i`
     - Instantiated with `X + Yi` where `X` and `Y` represent any valid `int` or `float` literal. `X` may be omitted
       - Numeric literals may have underscores (`_`) in them as digit separators
+    - Sequential comparison:
+      - Compare `a.real` with `b.real`
+        - If they are the same, the result of the comparison is determined by `a.imag` and `b.imag`
+        - Otherwise the result of the comparison is determined by `a.real` and `b.real`
     - Aliases:
       - `Complex`
       - `complex`
